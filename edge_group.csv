@@ -1,145 +1,145 @@
-industry1,industry2,value
-"Agriculture, forestry and fishing","Agriculture, forestry and fishing",1835.2687620000002
-"Agriculture, forestry and fishing",Mining,1.288602644
-"Agriculture, forestry and fishing",Manufacturing,7072.184816
-"Agriculture, forestry and fishing",Utilities,36.55020548
-"Agriculture, forestry and fishing",Construction,5.628000462
-"Agriculture, forestry and fishing","Wholesale and retail trade, food and accommodation",293.5160256
-"Agriculture, forestry and fishing",Transportation and communication,4.279968365
-"Agriculture, forestry and fishing",Banking and finance,3.538886921
-"Agriculture, forestry and fishing",Real estate and housing,0.6830680570000001
-"Agriculture, forestry and fishing",Business services,18.00176002
-"Agriculture, forestry and fishing",Personal services,41.28041904
-"Agriculture, forestry and fishing",Governmental services,39.91955689
-Mining,"Agriculture, forestry and fishing",102.0930458
+﻿industry1,industry2,value
+Agriculture forestry and fishing,Agriculture forestry and fishing,1835.268762
+Agriculture forestry and fishing,Mining,1.288602644
+Agriculture forestry and fishing,Manufacturing,7072.184816
+Agriculture forestry and fishing,Utilities,36.55020548
+Agriculture forestry and fishing,Construction,5.628000462
+Agriculture forestry and fishing,Wholesale and retail trade food and accommodation,293.5160256
+Agriculture forestry and fishing,Transportation and communication,4.279968365
+Agriculture forestry and fishing,Banking and finance,3.538886921
+Agriculture forestry and fishing,Real estate and housing,0.683068057
+Agriculture forestry and fishing,Business services,18.00176002
+Agriculture forestry and fishing,Personal services,41.28041904
+Agriculture forestry and fishing,Governmental services,39.91955689
+Mining,Agriculture forestry and fishing,102.0930458
 Mining,Mining,1505.464082
-Mining,Manufacturing,1302.6600740000001
+Mining,Manufacturing,1302.660074
 Mining,Utilities,49.72179843
 Mining,Construction,99.22163167
-Mining,"Wholesale and retail trade, food and accommodation",58.73411085
+Mining,Wholesale and retail trade food and accommodation,58.73411085
 Mining,Transportation and communication,34.72677188
 Mining,Banking and finance,26.95376791
 Mining,Real estate and housing,6.486451653
 Mining,Business services,54.90076239
 Mining,Personal services,23.77124417
 Mining,Governmental services,8.101982888
-Manufacturing,"Agriculture, forestry and fishing",2434.333545
-Manufacturing,Mining,1470.0055519999999
+Manufacturing,Agriculture forestry and fishing,2434.333545
+Manufacturing,Mining,1470.005552
 Manufacturing,Manufacturing,6673.906416
 Manufacturing,Utilities,512.9864376
 Manufacturing,Construction,4339.472072
-Manufacturing,"Wholesale and retail trade, food and accommodation",2505.838966
-Manufacturing,Transportation and communication,1478.6751789999998
+Manufacturing,Wholesale and retail trade food and accommodation,2505.838966
+Manufacturing,Transportation and communication,1478.675179
 Manufacturing,Banking and finance,175.7408445
 Manufacturing,Real estate and housing,39.15475759
-Manufacturing,Business services,576.9892825000001
+Manufacturing,Business services,576.9892825
 Manufacturing,Personal services,1112.040736
 Manufacturing,Governmental services,257.7568391
-Utilities,"Agriculture, forestry and fishing",102.8816941
-Utilities,Mining,1782.7648329999997
+Utilities,Agriculture forestry and fishing,102.8816941
+Utilities,Mining,1782.764833
 Utilities,Manufacturing,1624.885869
 Utilities,Utilities,3624.329638
-Utilities,Construction,108.34549369999999
-Utilities,"Wholesale and retail trade, food and accommodation",530.7577691
-Utilities,Transportation and communication,278.88554589999995
+Utilities,Construction,108.3454937
+Utilities,Wholesale and retail trade food and accommodation,530.7577691
+Utilities,Transportation and communication,278.8855459
 Utilities,Banking and finance,63.47418642
 Utilities,Real estate and housing,94.87405354
 Utilities,Business services,167.1341489
 Utilities,Personal services,393.6007216
 Utilities,Governmental services,399.1617232
-Construction,"Agriculture, forestry and fishing",27.14588221
+Construction,Agriculture forestry and fishing,27.14588221
 Construction,Mining,16.75507325
 Construction,Manufacturing,53.35290506
 Construction,Utilities,97.53993417
 Construction,Construction,2845.121777
-Construction,"Wholesale and retail trade, food and accommodation",280.92183470000003
+Construction,Wholesale and retail trade food and accommodation,280.9218347
 Construction,Transportation and communication,164.6896925
 Construction,Banking and finance,18.94129401
 Construction,Real estate and housing,1986.064733
 Construction,Business services,84.63590541
-Construction,Personal services,307.26790639999996
+Construction,Personal services,307.2679064
 Construction,Governmental services,280.1767788
-"Wholesale and retail trade, food and accommodation","Agriculture, forestry and fishing",614.5417137000001
-"Wholesale and retail trade, food and accommodation",Mining,743.3706715
-"Wholesale and retail trade, food and accommodation",Manufacturing,1981.0920210000002
-"Wholesale and retail trade, food and accommodation",Utilities,242.67907599999998
-"Wholesale and retail trade, food and accommodation",Construction,1279.710292
-"Wholesale and retail trade, food and accommodation","Wholesale and retail trade, food and accommodation",2554.682504
-"Wholesale and retail trade, food and accommodation",Transportation and communication,1769.879418
-"Wholesale and retail trade, food and accommodation",Banking and finance,169.3773014
-"Wholesale and retail trade, food and accommodation",Real estate and housing,57.59139259
-"Wholesale and retail trade, food and accommodation",Business services,738.4212008999999
-"Wholesale and retail trade, food and accommodation",Personal services,1068.918083
-"Wholesale and retail trade, food and accommodation",Governmental services,209.4901377
-Transportation and communication,"Agriculture, forestry and fishing",483.4159708000001
-Transportation and communication,Mining,989.9349563999999
+Wholesale and retail trade food and accommodation,Agriculture forestry and fishing,614.5417137
+Wholesale and retail trade food and accommodation,Mining,743.3706715
+Wholesale and retail trade food and accommodation,Manufacturing,1981.092021
+Wholesale and retail trade food and accommodation,Utilities,242.679076
+Wholesale and retail trade food and accommodation,Construction,1279.710292
+Wholesale and retail trade food and accommodation,Wholesale and retail trade food and accommodation,2554.682504
+Wholesale and retail trade food and accommodation,Transportation and communication,1769.879418
+Wholesale and retail trade food and accommodation,Banking and finance,169.3773014
+Wholesale and retail trade food and accommodation,Real estate and housing,57.59139259
+Wholesale and retail trade food and accommodation,Business services,738.4212009
+Wholesale and retail trade food and accommodation,Personal services,1068.918083
+Wholesale and retail trade food and accommodation,Governmental services,209.4901377
+Transportation and communication,Agriculture forestry and fishing,483.4159708
+Transportation and communication,Mining,989.9349564
 Transportation and communication,Manufacturing,2854.458171
 Transportation and communication,Utilities,309.9189537
 Transportation and communication,Construction,475.065674
-Transportation and communication,"Wholesale and retail trade, food and accommodation",3386.856335
+Transportation and communication,Wholesale and retail trade food and accommodation,3386.856335
 Transportation and communication,Transportation and communication,4104.719353
 Transportation and communication,Banking and finance,522.6389649
 Transportation and communication,Real estate and housing,56.86001127
 Transportation and communication,Business services,1078.096121
-Transportation and communication,Personal services,480.6943688999999
-Transportation and communication,Governmental services,381.73585760000003
-Banking and finance,"Agriculture, forestry and fishing",399.36479310000004
+Transportation and communication,Personal services,480.6943689
+Transportation and communication,Governmental services,381.7358576
+Banking and finance,Agriculture forestry and fishing,399.3647931
 Banking and finance,Mining,203.1863581
-Banking and finance,Manufacturing,840.0637437999999
-Banking and finance,Utilities,224.06154869999997
+Banking and finance,Manufacturing,840.0637438
+Banking and finance,Utilities,224.0615487
 Banking and finance,Construction,616.8138341
-Banking and finance,"Wholesale and retail trade, food and accommodation",1201.461514
+Banking and finance,Wholesale and retail trade food and accommodation,1201.461514
 Banking and finance,Transportation and communication,560.3411183
 Banking and finance,Banking and finance,1411.797541
 Banking and finance,Real estate and housing,758.7284197
 Banking and finance,Business services,446.3500573
-Banking and finance,Personal services,221.82803959999998
+Banking and finance,Personal services,221.8280396
 Banking and finance,Governmental services,18.60912042
-Real estate and housing,"Agriculture, forestry and fishing",49.17578476
+Real estate and housing,Agriculture forestry and fishing,49.17578476
 Real estate and housing,Mining,73.75826179
-Real estate and housing,Manufacturing,277.93174300000004
+Real estate and housing,Manufacturing,277.931743
 Real estate and housing,Utilities,35.09845218
 Real estate and housing,Construction,77.18826503
-Real estate and housing,"Wholesale and retail trade, food and accommodation",1858.7447960000002
-Real estate and housing,Transportation and communication,584.6196062999999
+Real estate and housing,Wholesale and retail trade food and accommodation,1858.744796
+Real estate and housing,Transportation and communication,584.6196063
 Real estate and housing,Banking and finance,141.8729785
 Real estate and housing,Real estate and housing,254.320969
 Real estate and housing,Business services,603.4263701
 Real estate and housing,Personal services,622.190385
 Real estate and housing,Governmental services,91.60419792
-Business services,"Agriculture, forestry and fishing",373.9098375
+Business services,Agriculture forestry and fishing,373.9098375
 Business services,Mining,2656.614834
 Business services,Manufacturing,3153.926822
 Business services,Utilities,492.3772313
 Business services,Construction,1288.37261
-Business services,"Wholesale and retail trade, food and accommodation",3211.736081
+Business services,Wholesale and retail trade food and accommodation,3211.736081
 Business services,Transportation and communication,2224.974832
-Business services,Banking and finance,1222.9503869999999
+Business services,Banking and finance,1222.950387
 Business services,Real estate and housing,305.002953
-Business services,Business services,2882.6988260000003
+Business services,Business services,2882.698826
 Business services,Personal services,1066.401378
 Business services,Governmental services,502.0781419
-Personal services,"Agriculture, forestry and fishing",9.838461286
+Personal services,Agriculture forestry and fishing,9.838461286
 Personal services,Mining,34.73306398
 Personal services,Manufacturing,151.9365221
 Personal services,Utilities,14.54462468
 Personal services,Construction,23.25678085
-Personal services,"Wholesale and retail trade, food and accommodation",132.4128811
+Personal services,Wholesale and retail trade food and accommodation,132.4128811
 Personal services,Transportation and communication,150.1145563
 Personal services,Banking and finance,44.22096141
 Personal services,Real estate and housing,11.06256392
 Personal services,Business services,82.58987154
-Personal services,Personal services,904.2820322000001
+Personal services,Personal services,904.2820322
 Personal services,Governmental services,36.36434026
-Governmental services,"Agriculture, forestry and fishing",12.61175157
+Governmental services,Agriculture forestry and fishing,12.61175157
 Governmental services,Mining,40.86117582
-Governmental services,Manufacturing,120.06969879999998
+Governmental services,Manufacturing,120.0696988
 Governmental services,Utilities,19.06435369
 Governmental services,Construction,17.63458364
-Governmental services,"Wholesale and retail trade, food and accommodation",146.28677380000002
-Governmental services,Transportation and communication,104.79771269999999
+Governmental services,Wholesale and retail trade food and accommodation,146.2867738
+Governmental services,Transportation and communication,104.7977127
 Governmental services,Banking and finance,11.76963868
-Governmental services,Real estate and housing,4.4267006989999995
+Governmental services,Real estate and housing,4.426700699
 Governmental services,Business services,27.19296154
 Governmental services,Personal services,42.81781822
 Governmental services,Governmental services,36.90386245
