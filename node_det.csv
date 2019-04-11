@@ -1,0 +1,112 @@
+﻿industry,VA,P,industryGroup,rx,ry
+Cultivation of annual crops,409.7164535,1342.197694,"Agriculture, forestry and fishing",604,217
+Cultivation of vegetables,591.8868372,881.4436027,"Agriculture, forestry and fishing",893,747
+Cultivation of grapes,483.2474956,895.8856528,"Agriculture, forestry and fishing",432,761
+Cultivation of other fruits,1514.826372,2356.979722,"Agriculture, forestry and fishing",675,818
+Cattle bredding,388.523852,952.8834383,"Agriculture, forestry and fishing",407,832
+Pigs breeding,198.4449663,615.223293,"Agriculture, forestry and fishing",34,953
+Chicken breeding,289.3844038,1059.143955,"Agriculture, forestry and fishing",736,288
+Breeding of other animals,66.53200832,127.1660045,"Agriculture, forestry and fishing",272,564
+Farming services,328.7859374,544.6959779,"Agriculture, forestry and fishing",866,864
+Forestry,930.8244835,1872.614611,"Agriculture, forestry and fishing",402,25
+Aquaculture,152.3109672,2030.909458,"Agriculture, forestry and fishing",13,810
+Extractive fishing,451.4766088,608.8325048,"Agriculture, forestry and fishing",151,366
+Coal mining,26.75517313,53.64606013,Mining,282,332
+Crude oil and gas mining,30.39660754,139.7589213,Mining,753,537
+Copper mining,12435.52492,22456.70989,Mining,66,550
+Iron mining,134.9434714,526.4717103,Mining,122,201
+Mining of other metals,362.9910272,757.3955301,Mining,648,659
+Other mining activities and mining services,695.1315931,1151.847592,Mining,407,124
+Processing and preserving of meat,702.092009,3303.738615,Manufacturing,345,320
+Processing and preserving of fishmeal and fish oil,313.9683064,719.825054,Manufacturing,398,677
+Processing and preserving of fish,757.5952711,3351.065052,Manufacturing,607,554
+Processing and preserving of fruits and vegetables,418.5118215,1316.905007,Manufacturing,322,697
+Manufacture of vegetable and animal oils,102.5437837,339.3117214,Manufacturing,967,653
+Manufacture of dairy products,732.7771175,1899.618532,Manufacturing,784,125
+Manufacture of grain mill products,160.0885944,753.1021634,Manufacturing,784,476
+Manufacture of prepared animal feeds,424.9336289,2230.059909,Manufacturing,692,834
+Manufacture of bakery products,810.7022717,1619.487676,Manufacturing,57,395
+"Manufacture of macaroni, noodles and other related products",86.77926618,172.2254666,Manufacturing,587,292
+Manufacture of other food products,589.0687494,1426.762739,Manufacturing,956,616
+"Distilling, rectifying and blending of spirits",42.26172242,177.9170099,Manufacturing,753,577
+Manufacture of wines,804.0131919,1825.960913,Manufacturing,806,347
+Manufacture of beers,139.0622077,545.5780864,Manufacturing,691,581
+Manufacture of soft drinks,730.4862404,1755.449538,Manufacturing,898,104
+Manufacture of tobacco products,1006.650603,1156.972833,Manufacturing,602,244
+Manufacture of textile products,121.7871434,438.4763916,Manufacturing,62,719
+Manufacture of wearing apparel,167.3405103,632.4130487,Manufacturing,314,593
+Manufacture of leather products,12.35558819,64.80295374,Manufacturing,459,798
+Manufacture of footwear,40.70302688,143.291528,Manufacturing,605,22
+Sawmilling and planing of wood,533.1709686,1549.391865,Manufacturing,413,308
+Manufacture of wood products,412.5301974,1224.654228,Manufacturing,976,777
+Manufacture of pulp and paper,1159.195423,2986.513482,Manufacturing,906,155
+Manufacture of containers of paper,185.2911065,715.4687662,Manufacturing,381,888
+Manufacture of other paper products,125.8898001,600.9070349,Manufacturing,331,516
+Printing,215.0601895,707.3464139,Manufacturing,84,132
+Manufacture of refined petroleum products,1728.693277,4468.03521,Manufacturing,751,745
+Manufacture of basic chemicals,825.1345108,2712.630766,Manufacturing,718,907
+Manufacture of paints,90.86201796,301.7959887,Manufacturing,190,181
+Manufacture of pharmaceutical products,414.5298182,1176.806698,Manufacturing,617,872
+"Manufacture of soap, detergents and toilet products",147.6053138,615.4878505,Manufacturing,820,961
+Manufacture of other chemical products,198.7117876,666.2371819,Manufacturing,916,529
+Manufacture of rubber products,145.5458397,401.3960494,Manufacturing,451,737
+Manufacture of plastic products,505.1768598,1803.702173,Manufacturing,553,992
+Manufacture of glass and glass products,137.4526799,365.4488104,Manufacturing,839,410
+Manufacture of cement,116.7373344,567.7282196,Manufacturing,484,481
+Manufacture of concrete and concrete products,322.5142468,1340.289739,Manufacturing,831,945
+Manufacture of basic iron and steel,157.6093392,998.5469985,Manufacturing,680,135
+Manufacture of other basic metals,105.4598504,493.0386709,Manufacturing,867,166
+Manufacture of fabricated metal products,1080.560423,2420.639922,Manufacturing,825,262
+Manufacture of industrial and domestic machinery and equipment,560.651197,1355.72139,Manufacturing,547,838
+Manufacture of electric and electronic machinery and equipment,351.544055,847.5426872,Manufacturing,171,622
+Manufacture of transport equipment,206.8772329,581.6921654,Manufacturing,65,41
+Manufacture of furniture,199.2244411,719.1565862,Manufacturing,653,248
+Repair and installation of machinery and other manufacturing,516.0726513,938.6998048,Manufacturing,265,893
+Electric power generation,2367.054642,4859.963494,Utilities,616,223
+Transmission of electric power,370.5737448,431.3356692,Utilities,941,886
+Distribution of electric power,606.0914399,3452.327649,Utilities,31,477
+Gas and steam manufacture and supply,335.7707212,1315.594335,Utilities,654,825
+"Water collection, treatment and supply",696.1964023,1105.978476,Utilities,534,674
+Waste collection and recycling activities,343.3332842,644.278767,Utilities,640,884
+Construction of residential buildings,2302.220285,5671.55084,Construction,571,381
+Construction of non-residential buildings,1286.127553,3607.337962,Construction,953,511
+Civil engineering,3480.371187,7977.188438,Construction,862,537
+Specialized construction activities,3429.376383,6558.043117,Construction,450,561
+Wholesale and retail trade of motor vehicles,1723.508776,3354.92481,"Wholesale and retail trade, food and accommodation",69,644
+Wholesale trade,6946.195081,13988.69169,"Wholesale and retail trade, food and accommodation",155,49
+Retail trade,6132.302805,12009.56124,"Wholesale and retail trade, food and accommodation",210,478
+Accommodation,626.6221306,1220.602843,"Wholesale and retail trade, food and accommodation",855,248
+Food and beverage service activities,2592.544959,5335.434739,"Wholesale and retail trade, food and accommodation",436,855
+Transport via railways,73.92126583,221.2134026,Transportation and communication,979,617
+Other passenger land transport,2312.129547,4665.856006,Transportation and communication,802,964
+Freight transport by road,1747.062458,5447.066589,Transportation and communication,373,91
+Transport via pipeline,114.617638,154.0766722,Transportation and communication,175,440
+Water transport,255.8098772,873.0886763,Transportation and communication,511,528
+Air transport,1390.168544,3181.030816,Transportation and communication,559,752
+Warehousing,415.7586404,630.2125827,Transportation and communication,736,975
+Support activities for land transport,761.5781762,1182.047777,Transportation and communication,931,626
+Other support activities for transport,1337.607704,2133.76627,Transportation and communication,627,179
+Postal and courier activities,177.3140824,302.6886537,Transportation and communication,420,463
+Wireless telecommunications,1163.536537,2685.85608,Transportation and communication,473,916
+Wired telecommunications,617.6187024,1359.83638,Transportation and communication,299,894
+Other telecommunications activities,507.6498703,1759.812485,Transportation and communication,329,925
+Information services activities,1860.113018,2974.054875,Transportation and communication,483,655
+Publishing activities,462.6130679,1238.227571,Transportation and communication,827,616
+"Banking, monetary intermediation",5809.74054,8190.92003,Banking and finance,3,293
+Insurance activities,709.3250243,2371.120435,Banking and finance,724,525
+Auxiliary financial activities,976.1805081,2051.835411,Banking and finance,175,553
+Real estate activities,3688.810047,5207.414889,Real estate and housing,959,134
+Housing services,8233.270464,10383.9513,Real estate and housing,236,633
+Legal and accounting services,2015.392902,2583.803105,Business services,210,8
+Architectural and engineering services,4240.891457,6340.062076,Business services,530,890
+Other professional activities,4192.283607,6121.569972,Business services,558,270
+Rental and leasing activities,1563.454707,2628.397304,Business services,939,368
+Business support activities,4549.27842,6657.88766,Business services,359,958
+Public administration,7497.93612,10736.60407,Governmental services,289,142
+Public education,4745.496271,5884.843278,Personal services,991,887
+Private education,2898.583065,3943.727713,Personal services,887,28
+Public health activities,3368.332804,4959.985811,Personal services,498,13
+Private health activities,3541.152925,6085.426731,Personal services,682,61
+Activities of organizations,716.86323,1205.854296,Personal services,456,141
+Artistic and entertainment activities,723.3684071,1303.13509,Personal services,188,487
+Other personal services,1680.685249,1993.789255,Personal services,252,715
