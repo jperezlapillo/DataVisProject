@@ -1,0 +1,77 @@
+labels:
+  - name: questions
+    paired:
+      htmlTemplate: <div class="questions"><span class="annotation">What are the research questions that your data visualization will help you to answer?</span><fieldset><legend>Research Questions</legend>{{children}}</fieldset></div>
+   
+  - name: justification
+    paired:
+      htmlTemplate: <div class="justification"><h2>Justification</h2><span class="annotation">Why will data visualization be the best approach to help you answer your research questions?</span>{{children}}</fieldset></div>
+         
+  - name: datasources
+    paired:
+      htmlTemplate: <div class="datasources"><h2>Data sources</h2><span class="annotation">Where will you get your data from?</span>{{children}}</fieldset></div>
+ 
+
+
+ 
+rules:
+  - description: Narrative must always contain just one set of research questions.
+    selector:
+      label: questions
+    minimumOccurrences: 1
+    maximumOccurrences: 1
+    
+  - description: research questions cannot be blank
+    selector:
+      label: questions
+    children:
+      minimumTrimmedTextLength: 1
+      
+  - description: Narrative must always contain just one section on datavis justification.
+    selector:
+      label: justification
+    minimumOccurrences: 1
+    maximumOccurrences: 1
+    
+  - description: justification cannot be blank
+    selector:
+      label: justification
+    children:
+      minimumTrimmedTextLength: 1
+      
+  - description: Narrative must always contain just one section on data sources.
+    selector:
+      label: datasources
+    minimumOccurrences: 1
+    maximumOccurrences: 1
+    
+  - description: data source details cannot be blank
+    selector:
+      label: datasources
+    children:
+      minimumTrimmedTextLength: 1
+
+
+styling:
+  css: |
+    fieldset {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    legend {
+      font-size:0.9em; font-style: italic;
+    }
+
+    .questions fieldset {
+      background: #f3f3f3;
+    }
+
+    .questions {
+      margin-top: 1em;
+      margin-bottom: 2em;
+    }
+    
+    .annotation {
+      font-size: 1.2em;
+      font-family: caveat, cursive !important;
+    }

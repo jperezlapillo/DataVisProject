@@ -1,0 +1,88 @@
+labels:
+  - name: todo
+    paired:
+      htmlTemplate: <span class="todo">{{children}}</span>
+
+  - name: aim
+    paired:
+      htmlTemplate: <div class="aim"><fieldset><legend>Aim</legend>{{children}}</fieldset></div>
+
+  - name: elmExample
+    paired:
+      htmlTemplate: <div class="elmExample"><fieldset><legend>Elm</legend>{{children}}</fieldset></div>
+
+  - name: haskellExample
+    paired:
+      htmlTemplate: <div class="haskellExample"><fieldset><legend>Haskell</legend>{{children}}</fieldset></div>
+
+  - name: task
+    paired:
+      htmlTemplate: <div class="task"><fieldset><legend>Task</legend>{{children}}</fieldset></div>
+
+  - name: annotation
+    paired:
+      htmlTemplate: <div class="annotation"><fieldset><legend>my annotation</legend>{{children}}</fieldset></div>
+
+  - name: infobox
+    paired:
+      htmlTemplate: <div class="infobox">{{children}}</div>
+
+styling:
+  css: |
+    .todo {
+      font-style: italic;
+      background: yellow;
+    }
+
+    fieldset {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    legend {
+      font-size:0.9em; font-style: italic; text-align: right;
+    }
+
+    .aim fieldset {
+        background: #eee;
+    }
+
+    .elmExample fieldset {
+      background: #EDFAFF;
+    }
+
+    .haskellExample fieldset {
+        background: #F9F7FF;
+      }
+
+    .elmExample fieldset pre, .haskellExample fieldset pre {
+        border: 0 !important;
+      }
+
+    .elmExample fieldset pre, .haskellExample fieldset pre {
+        background-color: rgba(255, 255, 255, 0);
+        padding : 0em;
+        margin : 0em;
+      }
+
+    .elmExample, .haskellExample, .task, .annotation {
+      margin-top: 0.1em;
+      margin-bottom: 1em;
+    }
+
+    .task fieldset {
+      background: #fffafa;
+      border-color: #a66;
+    }
+
+    .annotation fieldset {
+      font-size: 1.2em;
+      font-family: caveat, cursive !important;
+    }
+
+    .infobox {
+      background: #eee;
+      margin-left: 2em;
+      margin-bottom:1em;
+      padding: 1em;
+      padding-bottom: 0.5em;
+    }

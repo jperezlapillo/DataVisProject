@@ -1,0 +1,125 @@
+labels:
+  - name: questions
+    paired:
+      htmlTemplate: <div class="questions"><span class="annotation">What are the research questions that your data visualization will help you to answer?</span><fieldset><legend>Research Questions</legend>{{children}}</fieldset></div>
+   
+  - name: visualization
+    paired:
+      htmlTemplate: <div class="visualization"><h2>The Visualization</h2><span class="annotation">Insert your visualization(s) here.</span>{{children}}</fieldset></div>
+ 
+  - name: insights
+    paired:
+      htmlTemplate: <div class="insights"><h2>Insights</h2><span class="annotation">What has your visualization allowed you to discover about your data that help you answer your research question(s)?</span>{{children}}</fieldset></div>
+      
+  - name: designJustification
+    paired:
+      htmlTemplate: <div class="designJustification"><h2>Design Justification</h2><span class="annotation">Why have you designed your visualizations this way? Consider design approaches (e.g. session 2) and your use of visual variables (channels), layout and interaction.</span>{{children}}</fieldset></div>
+       
+  - name: validation
+    paired:
+      htmlTemplate: <div class="validation"><h2>Validation</h2><span class="annotation">Evaluate the degree to which your visualization has helped to answer your research questions. What are the strengths and limitations of your design in answering your questions? What might you do differently if you were to do this exercise again?</span>{{children}}</fieldset></div>
+         
+  - name: references
+    paired:
+      htmlTemplate: <div class="references"><hr /><h3>References</h3><span class="annotation">Add references from literature that you have used to support your design justification.</span>{{children}}</fieldset></div>
+         
+ 
+ 
+rules:
+  - description: Narrative must always contain a set of research questions.
+    selector:
+      label: questions
+    minimumOccurrences: 1
+    maximumOccurrences: 1
+    
+  - description: You must include some research questions that motivate your visualization.
+    selector:
+      label: questions
+    children:
+      minimumTrimmedTextLength: 104
+      
+  - description: Narrative must always contain some visualization(s).
+    selector:
+      label: visualization
+    minimumOccurrences: 1
+    maximumOccurrences: 1
+    
+  - description: You must include some visualization(s)
+    selector:
+      label: visualization
+    children:
+      minimumTrimmedTextLength: 52
+      
+  - description: Narrative must always contain a section on datavis insights.
+    selector:
+      label: insights
+    minimumOccurrences: 1
+    maximumOccurrences: 1
+    
+  - description: You must include insights derived from your visualization.
+    selector:
+      label: insights
+    children:
+      minimumTrimmedTextLength: 124
+
+  - description: Narrative must always contain a section on your design justification.
+    selector:
+      label: designJustification
+    minimumOccurrences: 1
+    maximumOccurrences: 1
+    
+  - description: You must include a justification for your design.
+    selector:
+      label: designJustification
+    children:
+      minimumTrimmedTextLength: 185
+      
+  - description: Postgraduate narrative must always contain a section on validation.
+    selector:
+      label: validation
+    minimumOccurrences: 1
+    maximumOccurrences: 1
+    
+  - description: You must include a validation/reflection of your design.
+    selector:
+      label: validation
+    children:
+      minimumTrimmedTextLength: 256
+      
+  - description: Narrative must always contain a list of references.
+    selector:
+      label: references
+    minimumOccurrences: 1
+    maximumOccurrences: 1
+    
+  - description: You must include some references to support your justification
+    selector:
+      label: references
+    children:
+      minimumTrimmedTextLength: 98
+       
+
+
+styling:
+  css: |
+    fieldset {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    legend {
+      font-size:0.9em; font-style: italic;
+    }
+
+    .questions fieldset {
+      background: #f3f3f3;
+    }
+
+    .questions {
+      margin-top: 1em;
+      margin-bottom: 2em;
+    }
+    
+    .annotation {
+      font-size: 1.2em;
+      font-family: caveat, cursive !important;
+    }
