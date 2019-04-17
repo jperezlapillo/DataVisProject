@@ -1,4 +1,446 @@
-﻿industry1,industry2,value
+---
+id: litvis
+
+narrative-schemas:
+  - ../narrative-schemas/courseworkPG.yml
+
+elm:
+  dependencies:
+    gicentre/elm-vegalite: latest
+    gicentre/tidy: latest
+---
+
+@import "../css/datavis.less"
+
+```elm {l=hidden}
+import Tidy exposing (..)
+import VegaLite exposing (..)
+```
+
+### INM402 Postgraduate Coursework:
+# Previous design choices using VegaLite
+**Author: Joaquin Perez-Lapillo**
+
+This markdown file includes previous design choices created using VegaLite, which proved not to be useful for network representation.
+
+{(visualization|}
+
+### 1. Network graph of the Chilean economy structure (12-industries)
+
+```elm {v l interactive}
+nodeLink1 : Spec
+nodeLink1 =
+    let
+        edgeData =
+            dataFromColumns []
+                << dataColumn "industry1" (strColumn "industry1" edgeGroupTable |> strs)
+                << dataColumn "industry2" (strColumn "industry2" edgeGroupTable |> strs)
+                << dataColumn "value" (numColumn "value" edgeGroupTable |> nums)
+
+        nodeData =
+            dataFromColumns []
+                << dataColumn "industryGroup" (strColumn "industryGroup" nodeGroupTable |> strs)
+                << dataColumn "VA" (numColumn "VA" nodeGroupTable |> nums)
+                << dataColumn "rx" (numColumn "rx" nodeGroupTable |> nums)
+                << dataColumn "ry" (numColumn "ry" nodeGroupTable |> nums)
+
+        trans =
+            transform
+                << lookup "industry2" (nodeData []) "industryGroup" [ "rx", "ry" ]
+                << calculateAs "datum.rx" "rx2"
+                << calculateAs "datum.ry" "ry2"
+                << lookup "industry1" (nodeData []) "industryGroup" [ "rx", "ry" ]
+
+        encEdges =
+            encoding
+                << position X [ pName "rx", pMType Quantitative, pAxis [] ]
+                << position Y [ pName "ry", pMType Quantitative, pAxis [] ]
+                << position X2 [ pName "rx2" ]
+                << position Y2 [ pName "ry2" ]
+                << strokeWidth
+                    [ mName "value"
+                    , mMType Quantitative
+                    , mScale [ scRange (raNums [ 0.1, 15 ]) ]
+                    ]
+
+        specEdges =
+            asSpec [ edgeData [], trans [], encEdges [], rule [ maOpacity 0.4 ] ]
+
+        encNodes =
+            encoding
+                << position X [ pName "rx", pMType Quantitative, pAxis [] ]
+                << position Y [ pName "ry", pMType Quantitative, pAxis [] ]
+                << size [ mName "VA", mMType Quantitative ]
+                << tooltip [ tName "industryGroup", tMType Nominal ]
+
+        specNodes =
+            asSpec [ nodeData [], encNodes [], circle [ maColor "purple" ] ]
+
+        cfg =
+            configure
+                << configuration (coView [ vicoStroke Nothing ])
+    in
+    toVegaLite [ cfg [], width 600, height 600, layer [ specEdges, specNodes ] ]
+```
+
+### 1. Network graph of the Chilean economy structure (111-industries)
+
+```elm {v l interactive}
+nodeLink2 : Spec
+nodeLink2 =
+    let
+        edgeData =
+            dataFromColumns []
+                << dataColumn "industry1" (strColumn "industry1" edgeDetailTable |> strs)
+                << dataColumn "industry2" (strColumn "industry2" edgeDetailTable |> strs)
+                << dataColumn "value" (numColumn "value" edgeDetailTable |> nums)
+
+        nodeData =
+            dataFromColumns []
+                << dataColumn "industry" (strColumn "industry" nodeDetailTable |> strs)
+                << dataColumn "VA" (numColumn "VA" nodeDetailTable |> nums)
+                << dataColumn "rx" (numColumn "rx" nodeDetailTable |> nums)
+                << dataColumn "ry" (numColumn "ry" nodeDetailTable |> nums)
+
+        trans =
+            transform
+                << lookup "industry2" (nodeData []) "industry" [ "rx", "ry" ]
+                << calculateAs "datum.rx" "rx2"
+                << calculateAs "datum.ry" "ry2"
+                << lookup "industry1" (nodeData []) "industry" [ "rx", "ry" ]
+
+        encEdges =
+            encoding
+                << position X [ pName "rx", pMType Quantitative, pAxis [] ]
+                << position Y [ pName "ry", pMType Quantitative, pAxis [] ]
+                << position X2 [ pName "rx2" ]
+                << position Y2 [ pName "ry2" ]
+                << strokeWidth
+                    [ mName "value"
+                    , mMType Quantitative
+                    , mScale [ scRange (raNums [ 0.1, 15 ]) ]
+                    ]
+
+        specEdges =
+            asSpec [ edgeData [], trans [], encEdges [], rule [ maOpacity 0.2 ] ]
+
+        encNodes =
+            encoding
+                << position X [ pName "rx", pMType Quantitative, pAxis [] ]
+                << position Y [ pName "ry", pMType Quantitative, pAxis [] ]
+                << size [ mName "VA", mMType Quantitative ]
+                << tooltip [ tName "industry", tMType Nominal ]
+                --<< color [mName "industryGroup", mMType Nominal]
+
+        specNodes =
+            asSpec [ nodeData [], encNodes [], circle [ maColor "navy" ] ]
+
+        cfg =
+            configure
+                << configuration (coView [ vicoStroke Nothing ])
+    in
+    toVegaLite [ cfg [], width 600, height 600, layer [ specEdges, specNodes ] ]
+```
+
+{|visualization)}
+
+
+
+### Appendix
+Datasets:
+1. Node table for groups of industries
+```elm {l=hidden}
+nodeGroupTable : Table
+nodeGroupTable =
+  """industryGroup,VA,P,rx,ry
+Agriculture forestry and fishing,5805.960386,13287.97591,751,594
+Banking and finance,7495.246072,12613.87587,235,633
+Business services,16561.30109,24331.72012,396,864
+Construction,10498.09541,23814.12036,570,882
+Governmental services,7497.93612,10736.60407,280,978
+Manufacturing,18605.82162,54431.84294,162,260
+Mining,13685.7428,25085.8297,77,205
+Personal services,17674.48195,25376.76217,677,470
+Real estate and housing,11922.08051,15591.36619,22,360
+Transportation and communication,13197.49913,28808.83484,536,683
+Utilities,4719.020235,11809.47839,599,11
+Wholesale and retail trade food and accommodation,18021.17375,35909.21532,159,620"""
+  |> fromCSV
+```
+2. Edge table for groups of industries
+```elm {l=hidden}
+edgeGroupTable : Table
+edgeGroupTable =
+  """industry1,industry2,value
+Agriculture forestry and fishing,Agriculture forestry and fishing,1835.268762
+Agriculture forestry and fishing,Mining,1.288602644
+Agriculture forestry and fishing,Manufacturing,7072.184816
+Agriculture forestry and fishing,Utilities,36.55020548
+Agriculture forestry and fishing,Construction,5.628000462
+Agriculture forestry and fishing,Wholesale and retail trade food and accommodation,293.5160256
+Agriculture forestry and fishing,Transportation and communication,4.279968365
+Agriculture forestry and fishing,Banking and finance,3.538886921
+Agriculture forestry and fishing,Real estate and housing,0.683068057
+Agriculture forestry and fishing,Business services,18.00176002
+Agriculture forestry and fishing,Personal services,41.28041904
+Agriculture forestry and fishing,Governmental services,39.91955689
+Mining,Agriculture forestry and fishing,102.0930458
+Mining,Mining,1505.464082
+Mining,Manufacturing,1302.660074
+Mining,Utilities,49.72179843
+Mining,Construction,99.22163167
+Mining,Wholesale and retail trade food and accommodation,58.73411085
+Mining,Transportation and communication,34.72677188
+Mining,Banking and finance,26.95376791
+Mining,Real estate and housing,6.486451653
+Mining,Business services,54.90076239
+Mining,Personal services,23.77124417
+Mining,Governmental services,8.101982888
+Manufacturing,Agriculture forestry and fishing,2434.333545
+Manufacturing,Mining,1470.005552
+Manufacturing,Manufacturing,6673.906416
+Manufacturing,Utilities,512.9864376
+Manufacturing,Construction,4339.472072
+Manufacturing,Wholesale and retail trade food and accommodation,2505.838966
+Manufacturing,Transportation and communication,1478.675179
+Manufacturing,Banking and finance,175.7408445
+Manufacturing,Real estate and housing,39.15475759
+Manufacturing,Business services,576.9892825
+Manufacturing,Personal services,1112.040736
+Manufacturing,Governmental services,257.7568391
+Utilities,Agriculture forestry and fishing,102.8816941
+Utilities,Mining,1782.764833
+Utilities,Manufacturing,1624.885869
+Utilities,Utilities,3624.329638
+Utilities,Construction,108.3454937
+Utilities,Wholesale and retail trade food and accommodation,530.7577691
+Utilities,Transportation and communication,278.8855459
+Utilities,Banking and finance,63.47418642
+Utilities,Real estate and housing,94.87405354
+Utilities,Business services,167.1341489
+Utilities,Personal services,393.6007216
+Utilities,Governmental services,399.1617232
+Construction,Agriculture forestry and fishing,27.14588221
+Construction,Mining,16.75507325
+Construction,Manufacturing,53.35290506
+Construction,Utilities,97.53993417
+Construction,Construction,2845.121777
+Construction,Wholesale and retail trade food and accommodation,280.9218347
+Construction,Transportation and communication,164.6896925
+Construction,Banking and finance,18.94129401
+Construction,Real estate and housing,1986.064733
+Construction,Business services,84.63590541
+Construction,Personal services,307.2679064
+Construction,Governmental services,280.1767788
+Wholesale and retail trade food and accommodation,Agriculture forestry and fishing,614.5417137
+Wholesale and retail trade food and accommodation,Mining,743.3706715
+Wholesale and retail trade food and accommodation,Manufacturing,1981.092021
+Wholesale and retail trade food and accommodation,Utilities,242.679076
+Wholesale and retail trade food and accommodation,Construction,1279.710292
+Wholesale and retail trade food and accommodation,Wholesale and retail trade food and accommodation,2554.682504
+Wholesale and retail trade food and accommodation,Transportation and communication,1769.879418
+Wholesale and retail trade food and accommodation,Banking and finance,169.3773014
+Wholesale and retail trade food and accommodation,Real estate and housing,57.59139259
+Wholesale and retail trade food and accommodation,Business services,738.4212009
+Wholesale and retail trade food and accommodation,Personal services,1068.918083
+Wholesale and retail trade food and accommodation,Governmental services,209.4901377
+Transportation and communication,Agriculture forestry and fishing,483.4159708
+Transportation and communication,Mining,989.9349564
+Transportation and communication,Manufacturing,2854.458171
+Transportation and communication,Utilities,309.9189537
+Transportation and communication,Construction,475.065674
+Transportation and communication,Wholesale and retail trade food and accommodation,3386.856335
+Transportation and communication,Transportation and communication,4104.719353
+Transportation and communication,Banking and finance,522.6389649
+Transportation and communication,Real estate and housing,56.86001127
+Transportation and communication,Business services,1078.096121
+Transportation and communication,Personal services,480.6943689
+Transportation and communication,Governmental services,381.7358576
+Banking and finance,Agriculture forestry and fishing,399.3647931
+Banking and finance,Mining,203.1863581
+Banking and finance,Manufacturing,840.0637438
+Banking and finance,Utilities,224.0615487
+Banking and finance,Construction,616.8138341
+Banking and finance,Wholesale and retail trade food and accommodation,1201.461514
+Banking and finance,Transportation and communication,560.3411183
+Banking and finance,Banking and finance,1411.797541
+Banking and finance,Real estate and housing,758.7284197
+Banking and finance,Business services,446.3500573
+Banking and finance,Personal services,221.8280396
+Banking and finance,Governmental services,18.60912042
+Real estate and housing,Agriculture forestry and fishing,49.17578476
+Real estate and housing,Mining,73.75826179
+Real estate and housing,Manufacturing,277.931743
+Real estate and housing,Utilities,35.09845218
+Real estate and housing,Construction,77.18826503
+Real estate and housing,Wholesale and retail trade food and accommodation,1858.744796
+Real estate and housing,Transportation and communication,584.6196063
+Real estate and housing,Banking and finance,141.8729785
+Real estate and housing,Real estate and housing,254.320969
+Real estate and housing,Business services,603.4263701
+Real estate and housing,Personal services,622.190385
+Real estate and housing,Governmental services,91.60419792
+Business services,Agriculture forestry and fishing,373.9098375
+Business services,Mining,2656.614834
+Business services,Manufacturing,3153.926822
+Business services,Utilities,492.3772313
+Business services,Construction,1288.37261
+Business services,Wholesale and retail trade food and accommodation,3211.736081
+Business services,Transportation and communication,2224.974832
+Business services,Banking and finance,1222.950387
+Business services,Real estate and housing,305.002953
+Business services,Business services,2882.698826
+Business services,Personal services,1066.401378
+Business services,Governmental services,502.0781419
+Personal services,Agriculture forestry and fishing,9.838461286
+Personal services,Mining,34.73306398
+Personal services,Manufacturing,151.9365221
+Personal services,Utilities,14.54462468
+Personal services,Construction,23.25678085
+Personal services,Wholesale and retail trade food and accommodation,132.4128811
+Personal services,Transportation and communication,150.1145563
+Personal services,Banking and finance,44.22096141
+Personal services,Real estate and housing,11.06256392
+Personal services,Business services,82.58987154
+Personal services,Personal services,904.2820322
+Personal services,Governmental services,36.36434026
+Governmental services,Agriculture forestry and fishing,12.61175157
+Governmental services,Mining,40.86117582
+Governmental services,Manufacturing,120.0696988
+Governmental services,Utilities,19.06435369
+Governmental services,Construction,17.63458364
+Governmental services,Wholesale and retail trade food and accommodation,146.2867738
+Governmental services,Transportation and communication,104.7977127
+Governmental services,Banking and finance,11.76963868
+Governmental services,Real estate and housing,4.426700699
+Governmental services,Business services,27.19296154
+Governmental services,Personal services,42.81781822
+Governmental services,Governmental services,36.90386245"""
+  |> fromCSV
+```
+3. Node table for detailed datasets
+```elm {l=hidden}
+nodeDetailTable : Table
+nodeDetailTable =
+  """industry,VA,P,industryGroup,rx,ry
+Cultivation of annual crops,409.7164535,1342.197694,Agriculture forestry and fishing,604,217
+Cultivation of vegetables,591.8868372,881.4436027,Agriculture forestry and fishing,893,747
+Cultivation of grapes,483.2474956,895.8856528,Agriculture forestry and fishing,432,761
+Cultivation of other fruits,1514.826372,2356.979722,Agriculture forestry and fishing,675,818
+Cattle bredding,388.523852,952.8834383,Agriculture forestry and fishing,407,832
+Pigs breeding,198.4449663,615.223293,Agriculture forestry and fishing,34,953
+Chicken breeding,289.3844038,1059.143955,Agriculture forestry and fishing,736,288
+Breeding of other animals,66.53200832,127.1660045,Agriculture forestry and fishing,272,564
+Farming services,328.7859374,544.6959779,Agriculture forestry and fishing,866,864
+Forestry,930.8244835,1872.614611,Agriculture forestry and fishing,402,25
+Aquaculture,152.3109672,2030.909458,Agriculture forestry and fishing,13,810
+Extractive fishing,451.4766088,608.8325048,Agriculture forestry and fishing,151,366
+Coal mining,26.75517313,53.64606013,Mining,282,332
+Crude oil and gas mining,30.39660754,139.7589213,Mining,753,537
+Copper mining,12435.52492,22456.70989,Mining,66,550
+Iron mining,134.9434714,526.4717103,Mining,122,201
+Mining of other metals,362.9910272,757.3955301,Mining,648,659
+Other mining activities and mining services,695.1315931,1151.847592,Mining,407,124
+Processing and preserving of meat,702.092009,3303.738615,Manufacturing,345,320
+Processing and preserving of fishmeal and fish oil,313.9683064,719.825054,Manufacturing,398,677
+Processing and preserving of fish,757.5952711,3351.065052,Manufacturing,607,554
+Processing and preserving of fruits and vegetables,418.5118215,1316.905007,Manufacturing,322,697
+Manufacture of vegetable and animal oils,102.5437837,339.3117214,Manufacturing,967,653
+Manufacture of dairy products,732.7771175,1899.618532,Manufacturing,784,125
+Manufacture of grain mill products,160.0885944,753.1021634,Manufacturing,784,476
+Manufacture of prepared animal feeds,424.9336289,2230.059909,Manufacturing,692,834
+Manufacture of bakery products,810.7022717,1619.487676,Manufacturing,57,395
+Manufacture of macaroni noodles and other related products,86.77926618,172.2254666,Manufacturing,587,292
+Manufacture of other food products,589.0687494,1426.762739,Manufacturing,956,616
+Distilling rectifying and blending of spirits,42.26172242,177.9170099,Manufacturing,753,577
+Manufacture of wines,804.0131919,1825.960913,Manufacturing,806,347
+Manufacture of beers,139.0622077,545.5780864,Manufacturing,691,581
+Manufacture of soft drinks,730.4862404,1755.449538,Manufacturing,898,104
+Manufacture of tobacco products,1006.650603,1156.972833,Manufacturing,602,244
+Manufacture of textile products,121.7871434,438.4763916,Manufacturing,62,719
+Manufacture of wearing apparel,167.3405103,632.4130487,Manufacturing,314,593
+Manufacture of leather products,12.35558819,64.80295374,Manufacturing,459,798
+Manufacture of footwear,40.70302688,143.291528,Manufacturing,605,22
+Sawmilling and planing of wood,533.1709686,1549.391865,Manufacturing,413,308
+Manufacture of wood products,412.5301974,1224.654228,Manufacturing,976,777
+Manufacture of pulp and paper,1159.195423,2986.513482,Manufacturing,906,155
+Manufacture of containers of paper,185.2911065,715.4687662,Manufacturing,381,888
+Manufacture of other paper products,125.8898001,600.9070349,Manufacturing,331,516
+Printing,215.0601895,707.3464139,Manufacturing,84,132
+Manufacture of refined petroleum products,1728.693277,4468.03521,Manufacturing,751,745
+Manufacture of basic chemicals,825.1345108,2712.630766,Manufacturing,718,907
+Manufacture of paints,90.86201796,301.7959887,Manufacturing,190,181
+Manufacture of pharmaceutical products,414.5298182,1176.806698,Manufacturing,617,872
+Manufacture of soap detergents and toilet products,147.6053138,615.4878505,Manufacturing,820,961
+Manufacture of other chemical products,198.7117876,666.2371819,Manufacturing,916,529
+Manufacture of rubber products,145.5458397,401.3960494,Manufacturing,451,737
+Manufacture of plastic products,505.1768598,1803.702173,Manufacturing,553,992
+Manufacture of glass and glass products,137.4526799,365.4488104,Manufacturing,839,410
+Manufacture of cement,116.7373344,567.7282196,Manufacturing,484,481
+Manufacture of concrete and concrete products,322.5142468,1340.289739,Manufacturing,831,945
+Manufacture of basic iron and steel,157.6093392,998.5469985,Manufacturing,680,135
+Manufacture of other basic metals,105.4598504,493.0386709,Manufacturing,867,166
+Manufacture of fabricated metal products,1080.560423,2420.639922,Manufacturing,825,262
+Manufacture of industrial and domestic machinery and equipment,560.651197,1355.72139,Manufacturing,547,838
+Manufacture of electric and electronic machinery and equipment,351.544055,847.5426872,Manufacturing,171,622
+Manufacture of transport equipment,206.8772329,581.6921654,Manufacturing,65,41
+Manufacture of furniture,199.2244411,719.1565862,Manufacturing,653,248
+Repair and installation of machinery and other manufacturing,516.0726513,938.6998048,Manufacturing,265,893
+Electric power generation,2367.054642,4859.963494,Utilities,616,223
+Transmission of electric power,370.5737448,431.3356692,Utilities,941,886
+Distribution of electric power,606.0914399,3452.327649,Utilities,31,477
+Gas and steam manufacture and supply,335.7707212,1315.594335,Utilities,654,825
+Water collection treatment and supply,696.1964023,1105.978476,Utilities,534,674
+Waste collection and recycling activities,343.3332842,644.278767,Utilities,640,884
+Construction of residential buildings,2302.220285,5671.55084,Construction,571,381
+Construction of non-residential buildings,1286.127553,3607.337962,Construction,953,511
+Civil engineering,3480.371187,7977.188438,Construction,862,537
+Specialized construction activities,3429.376383,6558.043117,Construction,450,561
+Wholesale and retail trade of motor vehicles,1723.508776,3354.92481,Wholesale and retail trade food and accommodation,69,644
+Wholesale trade,6946.195081,13988.69169,Wholesale and retail trade food and accommodation,155,49
+Retail trade,6132.302805,12009.56124,Wholesale and retail trade food and accommodation,210,478
+Accommodation,626.6221306,1220.602843,Wholesale and retail trade food and accommodation,855,248
+Food and beverage service activities,2592.544959,5335.434739,Wholesale and retail trade food and accommodation,436,855
+Transport via railways,73.92126583,221.2134026,Transportation and communication,979,617
+Other passenger land transport,2312.129547,4665.856006,Transportation and communication,802,964
+Freight transport by road,1747.062458,5447.066589,Transportation and communication,373,91
+Transport via pipeline,114.617638,154.0766722,Transportation and communication,175,440
+Water transport,255.8098772,873.0886763,Transportation and communication,511,528
+Air transport,1390.168544,3181.030816,Transportation and communication,559,752
+Warehousing,415.7586404,630.2125827,Transportation and communication,736,975
+Support activities for land transport,761.5781762,1182.047777,Transportation and communication,931,626
+Other support activities for transport,1337.607704,2133.76627,Transportation and communication,627,179
+Postal and courier activities,177.3140824,302.6886537,Transportation and communication,420,463
+Wireless telecommunications,1163.536537,2685.85608,Transportation and communication,473,916
+Wired telecommunications,617.6187024,1359.83638,Transportation and communication,299,894
+Other telecommunications activities,507.6498703,1759.812485,Transportation and communication,329,925
+Information services activities,1860.113018,2974.054875,Transportation and communication,483,655
+Publishing activities,462.6130679,1238.227571,Transportation and communication,827,616
+Banking monetary intermediation,5809.74054,8190.92003,Banking and finance,3,293
+Insurance activities,709.3250243,2371.120435,Banking and finance,724,525
+Auxiliary financial activities,976.1805081,2051.835411,Banking and finance,175,553
+Real estate activities,3688.810047,5207.414889,Real estate and housing,959,134
+Housing services,8233.270464,10383.9513,Real estate and housing,236,633
+Legal and accounting services,2015.392902,2583.803105,Business services,210,8
+Architectural and engineering services,4240.891457,6340.062076,Business services,530,890
+Other professional activities,4192.283607,6121.569972,Business services,558,270
+Rental and leasing activities,1563.454707,2628.397304,Business services,939,368
+Business support activities,4549.27842,6657.88766,Business services,359,958
+Public administration,7497.93612,10736.60407,Governmental services,289,142
+Public education,4745.496271,5884.843278,Personal services,991,887
+Private education,2898.583065,3943.727713,Personal services,887,28
+Public health activities,3368.332804,4959.985811,Personal services,498,13
+Private health activities,3541.152925,6085.426731,Personal services,682,61
+Activities of organizations,716.86323,1205.854296,Personal services,456,141
+Artistic and entertainment activities,723.3684071,1303.13509,Personal services,188,487
+Other personal services,1680.685249,1993.789255,Personal services,252,715"""
+  |> fromCSV
+```
+4. Edge table for detailed datasets
+```elm {l=hidden}
+edgeDetailTable : Table
+edgeDetailTable =
+  """industry1,industry2,value
 Cultivation of annual crops,Cultivation of annual crops,54478.71714
 Cultivation of annual crops,Cultivation of vegetables,31276.46783
 Cultivation of annual crops,Cultivation of grapes,638.8900463
@@ -12319,4 +12761,6 @@ Other personal services,Public health activities,22590.48205
 Other personal services,Private health activities,11840.38031
 Other personal services,Activities of organizations,71.41895096
 Other personal services,Artistic and entertainment activities,1512.202122
-Other personal services,Other personal services,246.5314007
+Other personal services,Other personal services,246.5314007"""
+  |> fromCSV
+```
